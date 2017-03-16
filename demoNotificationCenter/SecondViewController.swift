@@ -10,14 +10,18 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
+    @IBOutlet weak var notificationLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        NotificationCenter.default.addObserver(self, selector: #selector(SecondViewController.actOnSpecialNotification), name: NSNotification.Name(rawValue: mySpecialNotificationKey), object: nil)
     }
-
+    override func
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func actOnSpecialNotification() {
+        self.notificationLabel.text = "I heard the notification!"
     }
 
 
